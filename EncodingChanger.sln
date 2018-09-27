@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncodingChanger", "EncodingChanger\EncodingChanger.csproj", "{002356C9-AC21-450E-8547-FFA4DD932298}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{002356C9-AC21-450E-8547-FFA4DD932298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002356C9-AC21-450E-8547-FFA4DD932298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002356C9-AC21-450E-8547-FFA4DD932298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002356C9-AC21-450E-8547-FFA4DD932298}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00B677A6-F915-4ADE-B82E-867F301DC9EA}
+	EndGlobalSection
+EndGlobal
