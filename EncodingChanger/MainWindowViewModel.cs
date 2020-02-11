@@ -32,21 +32,21 @@ namespace EncodingChanger
 		readonly Model m_Model;
 		readonly ReadOnlyDictionary<int, EncodingViewModel> m_CodePageEncodingMap;
 
-		public string InputText
+		public string? InputText
 		{
 			get => m_Model.InputText;
 			set => m_Model.InputText = value;
 		}
-		public string OutputText => m_Model.OutputText;
-		public EncodingViewModel InputEncoding
+		public string? OutputText => m_Model.OutputText;
+		public EncodingViewModel? InputEncoding
 		{
 			get => m_Model.InputEncoding == null ? null : m_CodePageEncodingMap[m_Model.InputEncoding.CodePage];
-			set => m_Model.InputEncoding = value.GetEncoding();
+			set => m_Model.InputEncoding = value?.GetEncoding();
 		}
-		public EncodingViewModel OutputEncoding
+		public EncodingViewModel? OutputEncoding
 		{
 			get => m_Model.OutputEncoding == null ? null : m_CodePageEncodingMap[m_Model.OutputEncoding.CodePage];
-			set => m_Model.OutputEncoding = value.GetEncoding();
+			set => m_Model.OutputEncoding = value?.GetEncoding();
 		}
 		public ReadOnlyObservableCollection<EncodingViewModel> Encodings { get; }
 
@@ -68,6 +68,6 @@ namespace EncodingChanger
 
 		protected virtual void OnPropertyChanged(PropertyChangedEventArgs e) => PropertyChanged?.Invoke(this, e);
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler? PropertyChanged;
 	}
 }

@@ -14,30 +14,30 @@ namespace EncodingChanger
 			Encodings = new ReadOnlyCollection<EncodingInfo>(encodings);
 		}
 
-		string m_InputText;
-		string m_OutputText;
-		Encoding m_InputEncoding;
-		Encoding m_OutputEncoding;
+		string? m_InputText;
+		string? m_OutputText;
+		Encoding? m_InputEncoding;
+		Encoding? m_OutputEncoding;
 
-		public string InputText
+		public string? InputText
 		{
 			get => m_InputText;
 			set => this.SetProperty(ref m_InputText, value);
 		}
 
-		public string OutputText
+		public string? OutputText
 		{
 			get => m_OutputText;
 			private set => this.SetProperty(ref m_OutputText, value);
 		}
 
-		public Encoding InputEncoding
+		public Encoding? InputEncoding
 		{
 			get => m_InputEncoding;
 			set => this.SetProperty(ref m_InputEncoding, value);
 		}
 
-		public Encoding OutputEncoding
+		public Encoding? OutputEncoding
 		{
 			get => m_OutputEncoding;
 			set => this.SetProperty(ref m_OutputEncoding, value);
@@ -68,6 +68,6 @@ namespace EncodingChanger
 			}
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler? PropertyChanged;
 	}
 }

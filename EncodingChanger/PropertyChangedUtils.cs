@@ -29,14 +29,14 @@ namespace EncodingChanger
 
 		public static void RaisePropertyChanged(object @this, PropertyChangedEventHandler handler, [CallerMemberName]string propertyName = "") => RaisePropertyChanged(x => handler(@this, x), propertyName);
 
-		public static void RaisePropertyChanged(Action<PropertyChangedEventArgs> handler, [CallerMemberName]string propertyName = "") => handler(new PropertyChangedEventArgs(propertyName));
+		public static void RaisePropertyChanged(Action<PropertyChangedEventArgs>? handler, [CallerMemberName]string propertyName = "") => handler?.Invoke(new PropertyChangedEventArgs(propertyName));
 	}
 
 	static class PropertyChangedUtilsHelper<T> where T : INotifyPropertyChanged
 	{
-		static readonly Func<T, Action<PropertyChangedEventArgs>> s_HandlerFinder = GetHandlerFinder();
+		static readonly Func<T, Action<PropertyChangedEventArgs>?> s_HandlerFinder = GetHandlerFinder();
 
-		static Func<T, Action<PropertyChangedEventArgs>> GetHandlerFinder()
+		static Func<T, Action<PropertyChangedEventArgs>?> GetHandlerFinder()
 		{
 			var methods = typeof(T).GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			var methodAndParams = methods
@@ -73,7 +73,7 @@ namespace EncodingChanger
 					{
 						ilGenerator.Emit(OpCodes.Ldftn, method);
 					}
-					ilGenerator.Emit(OpCodes.Newobj, typeof(Action<PropertyChangedEventArgs>).GetConstructor(new[] { typeof(object), typeof(IntPtr) }));
+					ilGenerator.Emit(OpCodes.Newobj, typeof(Action<PropertyChangedEventArgs>).GetConstructor(new[] { typeof(object), typeof(IntPtr) })!);
 					ilGenerator.Emit(OpCodes.Ret);
 					return (Func<T, Action<PropertyChangedEventArgs>>)dynamicMethod.CreateDelegate(typeof(Func<T, Action<PropertyChangedEventArgs>>));
 				}
@@ -108,6 +108,6 @@ namespace EncodingChanger
 			return _ => null;
 		}
 
-		public static Action<PropertyChangedEventArgs> FindHandler(T instance) => s_HandlerFinder(instance);
+		public static Action<PropertyChangedEventArgs>? FindHandler(T instance) => s_HandlerFinder(instance);
 	}
 }
